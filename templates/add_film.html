@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg till film</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lägg till ny film</h1>
+    
+    <form method="POST">
+        <label for="title">Filmtitel:</label>
+        <input type="text" id="title" name="title" required>
+        
+        <label for="country">Land:</label>
+        <input type="text" id="country" name="country" required>
+        
+        <label for="year">År:</label>
+        <input type="number" id="year" name="year" required>
+        
+        <button type="submit">Spara film</button>
+    </form>
+    
+    <a href="{{ url_for('index') }}">← Tillbaka till filmlistan</a>
+</body>
+</html>

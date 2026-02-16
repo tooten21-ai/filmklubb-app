@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmklubben</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .film {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        a {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Filmklubben - World Cinema</h1>
+    
+    <a href="{{ url_for('add_film') }}">➕ Lägg till ny film</a>
+    
+    <h2>Våra filmer ({{ films|length }} st)</h2>
+    
+    {% if films %}
+        {% for film in films %}
+        <div class="film">
+            <h3>{{ film.title }}</h3>
+            <p><strong>Land:</strong> {{ film.country }}</p>
+            <p><strong>År:</strong> {{ film.year }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Inga filmer tillagda än. Börja med att lägga till en!</p>
+    {% endif %}
+</body>
+</html>
