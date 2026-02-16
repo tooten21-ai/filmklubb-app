@@ -40,5 +40,12 @@ def add_film():
     
     return render_template('add_film.html')
 
+@app.route('/delete/<int:film_id>')
+def delete_film(film_id):
+    film = Film.query.get_or_404(film_id)
+    db.session.delete(film)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)

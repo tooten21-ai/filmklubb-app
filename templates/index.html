@@ -34,6 +34,19 @@
         a:hover {
             background: #0056b3;
         }
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        .delete-btn:hover {
+            background: #c82333;
+        }
     </style>
 </head>
 <body>
@@ -45,11 +58,16 @@
     
     {% if films %}
         {% for film in films %}
-        <div class="film">
-            <h3>{{ film.title }}</h3>
-            <p><strong>Land:</strong> {{ film.country }}</p>
-            <p><strong>År:</strong> {{ film.year }}</p>
-        </div>
+            <div class="film">
+                <h3>{{ film.title }}</h3>
+                <p><strong>Land:</strong> {{ film.country }}</p>
+                <p><strong>År:</strong> {{ film.year }}</p>
+                <a href="{{ url_for('delete_film', film_id=film.id) }}" 
+                class="delete-btn" 
+                onclick="return confirm('Är du säker på att du vill ta bort {{ film.title }}?')">
+                    🗑️ Ta bort
+                </a>
+            </div>
         {% endfor %}
     {% else %}
         <p>Inga filmer tillagda än. Börja med att lägga till en!</p>
